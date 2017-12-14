@@ -1,3 +1,43 @@
+$(document).ready(function(){
+    $(".main-header").sticky({topSpacing:0});
+});
+
+$(document).ready(function(){
+
+/*  $('.is-sticky').each(function() {
+      if( $(this).is(':visible') ) {
+          $(".main-header").sticky({ topSpacing: 0, getWidthFrom: 'body' });
+      } else {
+          $(".main-header").sticky({ topSpacing: 0, getWidthFrom: 'body' });
+      }
+  })*/
+
+  $('.icon-container-menu').click( function(event) {
+    event.stopPropagation();
+    $(this).toggleClass("menu-active")
+    $('.mob-menu-container').toggleClass("menu-active");
+    $('.main-header').toggleClass("menu-active");
+  });
+  $('.main-header').on("click", function (event) {
+    event.stopPropagation();
+  });
+
+});
+
+$(document).on("click", function () {
+  $('.icon-container-menu').removeClass("menu-active")
+  $('.mob-menu-container').removeClass("menu-active");
+  $('.main-header').removeClass("menu-active");
+});
+
+$(document).keyup(function(e) {
+  if (e.keyCode == 27) {
+     $('.icon-container-menu').removeClass("menu-active")
+     $('.mob-menu-container').removeClass("menu-active");
+     $('.main-header').removeClass("menu-active");
+  }
+});
+
 /*
  * Replace all SVG images with inline SVG
  */
