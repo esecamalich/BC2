@@ -47,12 +47,8 @@ $scriptVersion = $detect->getScriptVersion();
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>CB2</title>
-		<link rel="apple-touch-icon" href="images/apple-touch-icon-precomposed.png"/>
-		<link rel="apple-touch-startup-image" href="images/a-300.png">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="#008178" />
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<link href="favicon.ico" rel="shortcut icon">
+		<link href="favicon.png" rel="shortcut icon">
 		<link rel="stylesheet" href="css/main.css" />
 		<!--[if lte IE 7]>
 		<link rel="stylesheet" type="text/css" href="css/ie.css" />
