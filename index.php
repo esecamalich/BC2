@@ -1,4 +1,43 @@
-<!DOCTYPE html>
+<?php
+/**
+ * MIT License
+ * ===========
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * -----------------------------------------------------------------------
+ * The demo is running all the Mobile_Detect's internal methods.
+ * Here you can spot detections errors instantly.
+ * -----------------------------------------------------------------------
+ *
+ * @author      Serban Ghita <serbanghita@gmail.com>
+ * @license     MIT License https://github.com/serbanghita/Mobile-Detect/blob/master/LICENSE.txt
+ *
+ */
+
+require_once 'Mobile_Detect.php';
+$detect = new Mobile_Detect;
+$deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
+$scriptVersion = $detect->getScriptVersion();
+
+?><!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -25,61 +64,7 @@
 	<body>
 		<!-- INTRO -->
 		<section class="block container bg-dark txt-white intro">
-			<header class="block-ctr pad-20 main-header">
-				<a href="index.php" class="left logo-container">
-					<img class="logo intro-logo svg" src="images/BC2-logo.png" alt="BC2" title="BC2">
-				</a>
-				<div class="right icon-container icon-container-menu">
-					<span class="icon icon-menu"></span>
-				</div>
-				<div class="right header-rgt desk-menu">
-					<nav class="right">
-
-					</nav>
-				</div>
-				<!-- MOBILE MENU -->
-				<section class="block container pad-20 txt-white mob-menu-container">
-					<nav class="mob-nav">
-						<ul class="list mob-menu">
-							<li class="list-item list-title">
-								Categorías
-							</li>
-							<li class="list-item">
-								<a href="categoria.php">Legal</a>
-							</li>
-							<li class="list-item">
-								<a href="categoria.php">Financiera</a>
-							</li>
-							<li class="list-item">
-								<a href="categoria.php">Corporativa</a>
-							</li>
-							<li class="list-item">
-								<a href="categoria.php">Economía</a>
-							</li>
-							<li class="list-item">
-								<a href="categoria.php">Fiscal</a>
-							</li>
-						</ul>
-					</nav>
-					<div class="main-nav-aside">
-						<a href="contacto.php" class="mob-contacto">Contacto</a>
-						<a href="#" class="btn-lang">Español</a>
-						<ul class="list list-lang">
-							<li>
-								<a href="#">Español</a>
-							</li>
-							<li>
-								<a href="#">Inglés</a>
-							</li>
-							<li>
-								<a href="#">Chino</a>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<!-- /MOBILE MENU -->
-			</header>
-			<div class="clear"></div>
+			<?php include('includes/main-nav.php'); ?>
 		</section>
 		<!-- /INTRO -->
 		<!-- ACERCA -->
@@ -154,6 +139,7 @@
 			</div>
 		</section>
 		<!-- /DESTACADAS -->
+		<?php if ( $detect->isMobile() && $detect->isTablet() ) : ?>
 		<!-- CATEGORÍAS -->
 		<section class="container full-width bg-white categorias">
 			<div class="pad-20 max-w">
@@ -203,6 +189,7 @@
 			</ul>
 		</section>
 		<!-- /CATEGORÍAS -->
+		<?php endif; ?>
 		<!-- EQUIPO -->
 		<section class="container bg-white pad-20 col-4 equipo">
 			<div class="max-w">
@@ -273,28 +260,7 @@
 			</div>
 		</section>
 		<!-- /RELACIONADOS -->
-		<!-- FOOTER -->
-		<footer class="container full-width bg-blue pad-20 txt-center txt-white main-footer">
-			<ul class="list list-social">
-				<li class="list-item">
-					<a href="#">
-						<img src="images/icon-fb.png" alt="Facebook" title="Facebook" />
-					</a>
-				</li>
-				<li class="list-item">
-					<a href="#">
-						<img src="images/icon-tw.png" alt="Twitter" title="Twitter" />
-					</a>
-				</li>
-			</ul>
-			<p>
-				Copyright © <?php echo date("Y") ?> <a href="http://www.bc2.mx">bc2.mx</a>
-			</p>
-			<p>
-				Todos los Derechos Reservados.
-			</p>
-		</footer>
-		<!-- /FOOTER -->
+		<?php include('includes/footer.php'); ?>
 		<!-- SCRIPTS -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script>
